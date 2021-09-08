@@ -7,7 +7,12 @@ export const StyledBanner = styled.section`
     margin: 10px 100px;
     color: white;
     padding-top: 100px;
+    @media only screen and (max-width: 750px) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px 40px;
 
+    }
     .banner__text-container {
         h1 {
             font-size: 50px;
@@ -20,6 +25,11 @@ export const StyledBanner = styled.section`
     }
 
     .banner__links-container {
+
+        @media only screen and (max-width: 750px) {
+       margin-top: 30px;
+
+    }
         .icon-wrapper {
             color: black;
         }

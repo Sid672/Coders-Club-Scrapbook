@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 export const StyledLogin = styled.main`
+    @media only screen and (max-width: 750px) {
+        display: flex;
+        flex-direction: column;
+    }
     .image-container {
         position: relative;
         width: 50%;
-
+        @media only screen and (max-width: 750px) {
+            width: 100vw;
+        }
         .blur {
             width: 100%;
             height: 100%;
@@ -25,6 +31,13 @@ export const StyledLogin = styled.main`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media only screen and (max-width: 750px) {
+            width: 100%;
+            position: relative;
+            padding-top: 50px;
+
+        }
         .text-container {
             width: 70%;
             max-width: 600px;
@@ -164,17 +177,15 @@ export const StyledLogin = styled.main`
                                 background-color: rgba(0, 0, 0, 0.8);
                                 transition: background-color 0.2s ease-in-out;
 
-                                
-                            span {
-                                display: inline-flex;
-                                padding: 0.2em;
-                                height: 2em;
-                                color: #fff;
-                                display: flex;
-                                text-align: center;
-                                font-size: 14px;
-                            }
-
+                                span {
+                                    display: inline-flex;
+                                    padding: 0.2em;
+                                    height: 2em;
+                                    color: #fff;
+                                    display: flex;
+                                    text-align: center;
+                                    font-size: 14px;
+                                }
                             }
                         }
                         input {

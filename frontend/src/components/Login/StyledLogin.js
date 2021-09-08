@@ -4,7 +4,9 @@ export const StyledLogin = styled.main`
     .image-container {
         position: relative;
         width: 50%;
-
+        @media only screen and (max-width: 750px) {
+            width: 100%;
+        }
         .blur {
             width: 100%;
             height: 100%;
@@ -25,6 +27,13 @@ export const StyledLogin = styled.main`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media only screen and (max-width: 750px) {
+            width: 100%;
+            position: relative;
+            padding-top: 50px;
+
+        }
         .text-container {
            
             width: 70%;

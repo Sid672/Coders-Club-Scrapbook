@@ -4,6 +4,7 @@ export const StyledProfile = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     .user-info-container {
         width: 90%;
         margin: 0 auto;
@@ -15,10 +16,18 @@ export const StyledProfile = styled.div`
         background-color: white;
         padding: 30px 0 50px 0;
         border-radius: 15px;
+
+        @media only screen and (max-width: 750px) {
+            width: 90%;
+            margin: 10px auto;
+        }
         .text-section {
             /* max-width: 1000px; */
             width: 70%;
-
+            @media only screen and (max-width: 750px) {
+                width: 60%;
+                margin-left: 30px;
+            }
             .name-container {
                 color: black;
 
@@ -70,18 +79,19 @@ export const StyledProfile = styled.div`
             img {
                 border-radius: 10000px;
                 width: 200px;
+                @media only screen and (max-width: 750px) {
+                    width: 150px;
+                }
             }
         }
     }
 
     .user-posts {
-    
-  column-width: 300px;
-	column-gap: 15px;
-  width: 90%;
-	max-width: 1100px;
-	margin: 50px auto; 
-
+        column-width: 300px;
+        column-gap: 15px;
+        width: 90%;
+        max-width: 1100px;
+        margin: 50px auto;
     }
     .bg-gradient {
         position: fixed;

@@ -5,6 +5,13 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     margin: 10px 100px;
+
+    @media only screen and (max-width: 750px) {
+        margin: 10px 50px;
+    }
+    @media only screen and (max-width: 500px) {
+        margin: 10px 20px;
+    }
     .header__logo-container {
         img {
         }
@@ -23,6 +30,10 @@ export const StyledHeader = styled.header`
             font-size: 16px;
             font-family: 'Noto Sans', sans-serif;
             border-radius: 10px;
+
+            @media only screen and (max-width: 750px) {
+                padding: 15px 15px;
+    }
             ::after {
                 content: '';
                 display: block;
@@ -36,13 +47,12 @@ export const StyledHeader = styled.header`
             :hover::after {
                 width: 100%;
                 cursor: pointer;
-
             }
         }
 
         .sign-in {
             background-color: transparent;
-
+            padding-right: 0;
             /* ::after {
                 content: '';
                 display: block;
@@ -59,8 +69,8 @@ export const StyledHeader = styled.header`
             } */
         }
 
-        .sign-up{
-            :hover{
+        .sign-up {
+            :hover {
                 cursor: pointer;
             }
         }
@@ -72,7 +82,7 @@ export const StyledHeader = styled.header`
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vw;
+        height: 100vh;
         background-image: linear-gradient(135deg, #432b58, #734b6f);
     }
 `;

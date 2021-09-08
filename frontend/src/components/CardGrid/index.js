@@ -13,13 +13,14 @@ const CardGrid = (props) => {
     const { loading, posts, error } = postList;
     useEffect(() => {
         listPosts();
+
     }, []);
 
     return (
         <Fragment>
             {loading ? (
                <Loader />
-            ) : posts.length != 0 ? (
+            ) : posts && posts.length !== 0 ? (
                 <StyledCardGrid>
                     {posts.map((post, idx) => (
                         <Card
@@ -32,7 +33,7 @@ const CardGrid = (props) => {
                     ))}
                 </StyledCardGrid>
             ) : (
-                <h1>No posts</h1>
+                <h1>Error Loading Posts</h1>
             )}
         </Fragment>
     );
