@@ -32,5 +32,10 @@
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
-  }
+  },
+  "engines": {
+    "node": "14.15.4"
 }
+}
+
+
