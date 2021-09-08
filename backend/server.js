@@ -23,15 +23,15 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')));
 
-    app.get('/*', (req, res) => {
+    app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'build', 'index.html'));
       });
 }
 
 app.use(errorHandler);
 
-
+let port = process.env.PORT || 5000
 app.listen(
-    process.env.PORT,
-    console.log(`Server Running in ${process.env.NODE_ENV} on port ${process.env.NODE_ENV}`)
+    port,
+    console.log(`Server Running in ${process.env.NODE_ENV} on port ${port}`)
 );
