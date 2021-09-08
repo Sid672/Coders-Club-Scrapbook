@@ -33,5 +33,5 @@ app.use(errorHandler);
 
 app.listen(
     process.env.PORT,
-    console.log(`Server Running in ${process.env.NODE_ENV} on port ${PORT}`)
+    console.log(`Server Running in ${process.env.NODE_ENV} on port ${process.env.NODE_ENV}`)
 );
