@@ -1,0 +1,49 @@
+import React, { useState } from 'react';
+import { StyledTagsInput } from './StyledTagsInput';
+import { AiFillCloseCircle } from 'react-icons/ai';
+
+const TagsInput = ({tags, setTags, label}) => {
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            if (event.value !== '') {
+                setTags([...tags, event.target.value]);
+                event.target.value = '';
+            }
+        }
+    };
+
+    const removeTagHandler = (tag) => {
+        let filteredTags = tags.filter((t) => t !== tag);
+        console.log(filteredTags);
+        setTags(filteredTags);
+    };
+
+    return (
+        <StyledTagsInput>
+            <div className='tags-container'>
+                {tags.map((tag, idx) => (
+                    <div
+                        className='tag-container'
+                        onClick={() => removeTagHandler(tag)}
+                    >
+                        <p>{tag}</p>
+                        <AiFillCloseCircle />
+                    </div>
+                ))}
+            </div>
+            <div className='form-group'>
+                <span>{label}</span>
+
+                <input
+                    className='form-field'
+                    type='text'
+                    name=''
+                    id=''
+                    onKeyPress={handleKeyPress}
+                />
+            </div>
+        </StyledTagsInput>
+    );
+};
+
+export default TagsInput;
