@@ -13,17 +13,17 @@ const CardGrid = (props) => {
     const { loading, posts, error } = postList;
     useEffect(() => {
         listPosts();
-
     }, []);
 
     return (
         <Fragment>
             {loading ? (
-               <Loader />
+                <Loader />
             ) : posts && posts.length !== 0 ? (
                 <StyledCardGrid>
                     {posts.map((post, idx) => (
                         <Card
+                            key={idx}
                             username={post.userInfo.username}
                             text={post.text}
                             tags={post.tags}

@@ -1,14 +1,11 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './pages/home';
-import { AnimatePresence } from 'framer-motion';
-import Profile from './components/Profile';
 import ProfilePage from './pages/profile';
 // import { useLocation } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AllUsersProfile from './components/AllUsersProfile';
 import AllUsersProfilePage from './pages/allUsersprofile';
 
 function App() {

@@ -1,11 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
-import profilePic from '../../images/profile.png';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import ProfilePostCard from '../ProfilePostCard';
 import { getUserDetailsById } from '../../actions/userActions';
 import { StyledProfile } from '../Profile/StyledProfile';
 import Loader from '../Loader/Loader';
-const AllUsersProfile = ({location, match}) => {
+const AllUsersProfile = ({ location, match }) => {
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.userDetails);
 
@@ -14,16 +13,17 @@ const AllUsersProfile = ({location, match}) => {
         dispatch(getUserDetailsById(match.params.username));
     }, [match, dispatch]);
 
+ 
     return (
         <Fragment>
             {loading ? (
-               <Loader />
+                <Loader />
             ) : (
                 <StyledProfile>
                     <div className='user-info-container'>
                         <div className='img-section'>
                             <div className='img-container'>
-                                <img src={`${user.profileImage}`}  alt='' />
+                                <img src={`${user.profileImage}`} alt='' />
                             </div>
                         </div>
                         <div className='text-section'>
@@ -42,25 +42,21 @@ const AllUsersProfile = ({location, match}) => {
 
                             <div className='intrest-container'>
                                 <h3>Intrests</h3>
-                                {
-                                        user.interests.map((intr, idx) => (
-                                            <h4>{intr}</h4>
-                                    ))
-                                }
+                                {user.interests.map((intr, idx) => (
+                                    <h4 key={idx}>{intr}</h4>
+                                ))}
                             </div>
                         </div>
                     </div>
 
                     <div className='user-posts'>
-                        {
-                                user.posts.map((post, idx) => (
-                                <ProfilePostCard
-                                    text={post.text}
-                                    image='http://placehold.it/32x32'
-                                    tags={post.tags}
-                                />
-                            ))
-                        }
+                        {user.posts.map((post, idx) => (
+                            <ProfilePostCard
+                                text={post.text}
+                                tags={post.tags}
+                                createdAt={post.createdAt}
+                            />
+                        ))}
                     </div>
                     <div className='bg-gradient'></div>
                 </StyledProfile>
@@ -68,6 +64,5 @@ const AllUsersProfile = ({location, match}) => {
         </Fragment>
     );
 };
-
 
 export default React.memo(AllUsersProfile);

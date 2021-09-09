@@ -27,11 +27,11 @@ const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
                 </div>
             </div>
 
-            <article class='post-text'>{text}</article>
+            <article className='post-text'>{text}</article>
 
             <div className='post-footer'>
-                {tags.map((tag) => (
-                    <div className='tag-container'>
+                {tags.map((tag, idx) => (
+                    <div key={idx} className='tag-container'>
                         <p className='tag'>{tag}</p>
                     </div>
                 ))}

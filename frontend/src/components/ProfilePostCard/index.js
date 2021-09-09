@@ -5,7 +5,6 @@ import { StyledProfilePost } from './StyledProfilePost';
 const ProfilePostCard = ({ text, tags, createdAt }) => {
 
 
-
     let postDate = '';
     if (
         moment(Date.now()).format('MMM Do YY') ===
@@ -17,6 +16,7 @@ const ProfilePostCard = ({ text, tags, createdAt }) => {
     } else {
         postDate = moment(createdAt).format('MMM Do YY');
     }
+
 
     return (
         <StyledProfilePost>

@@ -183,7 +183,7 @@ const Register = ({ register, location, history }) => {
 
                                     <div className='image-field'>
                                         <label for='image'>
-                                            <span class='glyphicon glyphicon-camera'></span>
+                                            <span className='glyphicon glyphicon-camera'></span>
                                             <span>Change Image</span>
                                         </label>
                                         <input

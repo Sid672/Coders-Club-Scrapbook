@@ -10,7 +10,6 @@ const Profile = (props) => {
     const userDetails = useSelector((state) => state.userDetails);
 
     const { loading, user, error } = userDetails;
-    console.log(userDetails);
     useEffect(() => {
         dispatch(getUserDetails());
     }, []);
