@@ -41,7 +41,11 @@ export const StyledLogin = styled.main`
         .text-container {
             width: 70%;
             max-width: 600px;
+            
+            @media only screen and (max-width: 750px) {
+                width: 90%;
 
+        }
             .form-header {
                 .heading-main {
                     font-family: 'Raleway';
@@ -249,10 +253,19 @@ export const StyledLogin = styled.main`
                     font-family: 'Noto Sans', sans-serif;
                     border-radius: 10px;
                     width: 100%;
+
+                    
+                    @media only screen and (max-width: 600px) {
+                        margin-bottom: 100px;
+                    }
                 }
 
                 .two {
                     margin-top: 50px;
+                    
+                    @media only screen and (max-width: 600px) {
+                        margin-bottom: 100px;
+                    }
                 }
             }
         }

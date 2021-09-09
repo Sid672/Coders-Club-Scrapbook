@@ -154,9 +154,8 @@ const Register = ({ register, location, history }) => {
                                 <h1 className='heading-main'>Finish Sign up</h1>
                                 <p className='sub-heading'>
                                     Feeling Lazy?{' '}
-                                    <Link to='login'>
+                                    
                                         <span>Skip for now </span>
-                                    </Link>
                                 </p>
                             </div>
                             <div className='form-fields'>

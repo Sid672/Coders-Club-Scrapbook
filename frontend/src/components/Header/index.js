@@ -25,12 +25,12 @@ const Header = ({ logout }) => {
                     <div className='header__button-container'>
                         {!userInfo ? (
                             <Fragment>
-                                <Link to='register'>
+                                <Link to='/register'>
                                     <button className='button sign-up'>
                                         Sign up
                                     </button>
                                 </Link>
-                                <Link to='login'>
+                                <Link to='/login'>
                                     <button className='button sign-in'>
                                         Sign In
                                     </button>
@@ -45,7 +45,7 @@ const Header = ({ logout }) => {
                                 >
                                     Logout
                                 </button>
-                                <Link to='profile'>
+                                <Link to='/profile'>
                                     <button className='button sign-in'>
                                         Profile
                                     </button>

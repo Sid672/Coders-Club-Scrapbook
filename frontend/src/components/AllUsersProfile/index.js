@@ -31,11 +31,13 @@ const AllUsersProfile = ({ location, match }) => {
                                 <h1 className='name'>{user.name}</h1>
                                 <h3 className='username'>@{user.username}</h3>
                             </div>
-                            <div className='icon-container'>
-                                <p>Facebook</p>
-                                <p>Instagram</p>
-                                <p>LinkedIn</p>
-                            </div>
+                           { 
+                            //    <div className='icon-container'>
+                            //     <p>Facebook</p>
+                            //     <p>Instagram</p>
+                            //     <p>LinkedIn</p>
+                            // </div>
+                        }
                             <div className='bio-container'>
                                 <p className='bio'>{user.bio}</p>
                             </div>

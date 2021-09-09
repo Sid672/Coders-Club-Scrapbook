@@ -32,10 +32,8 @@ export const StyledLogin = styled.main`
             width: 100%;
             position: relative;
             padding-top: 50px;
-
         }
         .text-container {
-           
             width: 70%;
             max-width: 600px;
 
@@ -57,12 +55,10 @@ export const StyledLogin = styled.main`
                 }
             }
 
-            .social-buttons{
-                
+            .social-buttons {
             }
 
             .form-fields {
-               
                 margin-top: 50px;
                 .email-field {
                     label {
@@ -107,27 +103,28 @@ export const StyledLogin = styled.main`
                     }
                 }
 
-                p{
+                p {
                     margin-bottom: 50px;
                     text-align: right;
-
                 }
 
                 .submit {
-                    
-                        background-color: #0d0735;
-                        height: 50%;
-                        border: none;
-                        color: white;
-                        padding: 15px 32px;
-                        text-align: center;
-                        text-decoration: none;
-                        display: inline-block;
-                        font-size: 16px;
-                        font-family: 'Noto Sans', sans-serif;
-                        border-radius: 10px;
-                        width: 100%;
-                    
+                    background-color: #0d0735;
+                    height: 50%;
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    font-family: 'Noto Sans', sans-serif;
+                    border-radius: 10px;
+                    width: 100%;
+
+                    @media only screen and (max-width: 600px) {
+                        margin-bottom: 100px;
+                    }
                 }
             }
         }

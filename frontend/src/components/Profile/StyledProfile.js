@@ -32,6 +32,9 @@ export const StyledProfile = styled.div`
                 color: black;
 
                 h1 {
+                    @media only screen and (max-width: 600px) {
+                        font-size: 25px;
+                    }
                 }
 
                 h3 {
@@ -55,8 +58,7 @@ export const StyledProfile = styled.div`
             }
 
             .intrest-container {
-                margin-top: 15px;
-
+                
                 h3 {
                     margin-bottom: 15px;
                     color: black;
@@ -64,11 +66,19 @@ export const StyledProfile = styled.div`
 
                 h4 {
                     background-image: linear-gradient(135deg, #432b58, #734b6f);
-                    display: inline;
+                    display: inline-flex;
+                    max-width: min-content;
                     margin-right: 20px;
                     padding: 8px 16px;
                     border-radius: 30px;
                     color: white;
+                    margin-top: 15px;
+
+                    @media only screen and (max-width: 600px) {
+                        margin-top: 8px;
+                        margin-right: 8px;
+                    }
+
                 }
             }
         }
@@ -81,6 +91,9 @@ export const StyledProfile = styled.div`
                 width: 200px;
                 @media only screen and (max-width: 750px) {
                     width: 150px;
+                }
+                @media only screen and (max-width: 600px) {
+                    width: 120px;
                 }
             }
         }
