@@ -1,12 +1,27 @@
 import React from 'react';
 import { StyledProfilePost } from './StyledProfilePost';
 
-const ProfilePostCard = ({ username, text, image, tags }) => {
+const ProfilePostCard = ({ text, tags, createdAt }) => {
+
+
+
+    let postDate = '';
+    if (
+        moment(Date.now()).format('MMM Do YY') ===
+            moment(createdAt).format('MMM Do YY') ||
+        moment(Date.now()).subtract(1, 'days').format('MMM Do YY') ===
+            moment(createdAt).format('MMM Do YY')
+    ) {
+        postDate = moment(createdAt).calendar();
+    } else {
+        postDate = moment(createdAt).format('MMM Do YY');
+    }
+
     return (
         <StyledProfilePost>
             <div className='post-header'>
                 <div className='header-text-wrapper'>
-                    <p className='time'>Today 11:00 am</p>
+                    <p className='time'>{postDate}</p>
                 </div>
             </div>
 

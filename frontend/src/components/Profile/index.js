@@ -68,8 +68,8 @@ const Profile = (props) => {
                         {user.posts.map((post, idx) => (
                             <ProfilePostCard
                                 text={post.text}
-                                image='http://placehold.it/32x32'
                                 tags={post.tags}
+                                createdAt={post.createdAt}
                             />
                         ))}
                     </div>
