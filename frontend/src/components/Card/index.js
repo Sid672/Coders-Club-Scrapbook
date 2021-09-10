@@ -3,7 +3,22 @@ import { Link } from 'react-router-dom';
 import { StyledCard } from './card.styles';
 import moment from 'moment';
 const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
-   
+    const urlify = (text) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, (url) => {
+            return `<a href="${url}">${url}</a>`;
+        });
+    };
+
+    const html = urlify(text);
+    var stringToHTML = function (str) {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(str, 'text/html');
+        return doc.body;
+    };
+    
+console.log(stringToHTML(html))
+
     let postDate = '';
     if (
         moment(Date.now()).format('MMM Do YY') ===
@@ -27,7 +42,7 @@ const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
                 </div>
             </div>
 
-            <article className='post-text'>{text}</article>
+            <article className='post-text' dangerouslySetInnerHTML={{ __html: html}} ></article>
 
             <div className='post-footer'>
                 {tags.map((tag, idx) => (

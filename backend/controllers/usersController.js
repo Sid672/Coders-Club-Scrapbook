@@ -29,6 +29,10 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
     }
 
+        const removeHtml = (str) => {
+        return str.replace(/(<([^>]+)>)/gi, '');
+    };
+
     const user = await User.create({
         name,
         email,
@@ -67,7 +71,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             social: user.social,
             posts: user.posts,
             interests: user.interests,
-            profileImage: user.profileImage
+            profileImage: user.profileImage,
         });
 
         console.log(user);
@@ -78,7 +82,9 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 const getUserByUsername = asyncHandler(async (req, res) => {
-    const user = await User.findOne({username: req.params.username}).populate('posts');
+    const user = await User.findOne({ username: req.params.username }).populate(
+        'posts'
+    );
 
     if (user) {
         res.json({
@@ -89,8 +95,7 @@ const getUserByUsername = asyncHandler(async (req, res) => {
             social: user.social,
             posts: user.posts,
             interests: user.interests,
-            profileImage: user.profileImage
-
+            profileImage: user.profileImage,
         });
 
         console.log(user);
@@ -102,19 +107,24 @@ const getUserByUsername = asyncHandler(async (req, res) => {
 
 const updateUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
+
+    const removeHtml = (str) => {
+        return str.replace(/(<([^>]+)>)/gi, '');
+    };
     if (user) {
-        user.name = req.body.name || user.name;
-        user.email = req.body.email || user.email;
+        user.name = removeHtml(req.body.name) || user.name;
         user.interests = req.body.interests || user.interests;
-        user.bio = req.body.bio || user.bio;
-        if (req.body.password) {
-            user.password = req.body.password;
-        }
+        user.bio = removeHtml(req.body.bio) || user.bio;
+        // if (req.body.password) {
+        //     user.password = req.body.password;
+        // }
+
+        
+
         const updatedUser = await user.save();
         res.json({
             _id: updatedUser._id,
             name: updatedUser.name,
-            email: updatedUser.email,
             interests: updatedUser.interests,
             bio: updatedUser.bio,
         });
@@ -124,4 +134,10 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUserByUsername };
+export {
+    authUser,
+    getUserProfile,
+    registerUser,
+    updateUserProfile,
+    getUserByUsername,
+};

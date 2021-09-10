@@ -1,15 +1,17 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createNewPostReducer, postListReducer } from './reducers/postsReducer';
-import { userDetailsReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducers';
+import { createNewPostReducer, deletePostReducer, postListReducer } from './reducers/postsReducer';
+import { updateProfileReducer, userDetailsReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
 const reducer = combineReducers({
     postList: postListReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
-    createNewPost : createNewPostReducer
+    createNewPost : createNewPostReducer,
+    deletePost: deletePostReducer,
+    updatedProfile: updateProfileReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

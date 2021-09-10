@@ -5,17 +5,18 @@ import User from '../model/userModel.js';
 import ErrorResponse from '../utils/errorResponse.js';
 
 export const getPosts = asyncHandler(async (req, res, next) => {
-    const posts = await Post.find().sort({createdAt: 'desc'}).populate('userInfo', {
-        username: 1,
-        name: 1,
-        profileImage: 1
-    });
+    const posts = await Post.find()
+        .sort({ createdAt: 'desc' })
+        .populate('userInfo', {
+            username: 1,
+            name: 1,
+            profileImage: 1,
+        });
     res.status(200).json({
         success: true,
         count: posts.length,
         data: posts,
     });
-
 });
 
 //*******************NOT REQUIRED FOR NOW****************** */
@@ -106,6 +107,8 @@ export const createPost = asyncHandler(async (req, res, next) => {
 });
 
 export const updatePost = asyncHandler(async (req, res, next) => {
+
+    
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
@@ -123,15 +126,26 @@ export const updatePost = asyncHandler(async (req, res, next) => {
 });
 
 export const deletePost = asyncHandler(async (req, res, next) => {
+    const post = await Post.findById(req.params.id);
+    
 
-    // const post = await Post.findByIdAndDelete(req.params.id);
-    // if (!post) {
-    //     return next(
-    //         new ErrorResponse(`Post not found with id of ${req.params.id}`, 404)
-    //     );
-    // }
-    // res.status(200).json({
-    //     success: true,
-    //     data: {},
-    // });
+    if (!post) {
+        return next(
+            new ErrorResponse(`Post not found with id of ${req.params.id}`, 404)
+        );
+    }
+
+    if (req.user._id.equals(post.userInfo)) {
+        await post.deleteOne()
+
+         res.status(200).json({
+            success: true,
+            data: {},
+        });
+
+    } else {
+        return next(new ErrorResponse(`Not Authorised`, 401));
+    }
+
+   
 });

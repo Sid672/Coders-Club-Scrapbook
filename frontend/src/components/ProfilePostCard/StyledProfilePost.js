@@ -86,6 +86,31 @@ export const StyledProfilePost = styled.section`
     margin-bottom: 1.875em;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
+
+    :hover {
+        .post-header {
+            .header-text-wrapper {
+                .delete-icon {
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: transparent;
+                    position: absolute;
+                    top: -10px;
+                    border-radius: 100px;
+                    right: -10px;
+                    transition: all 0.3s;
+
+                    :hover {
+                        background-color: #0000007d;
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
     h3 {
         color: black;
     }
@@ -94,11 +119,30 @@ export const StyledProfilePost = styled.section`
         display: flex;
         align-items: center;
         margin-bottom: 15px;
+        position: relative;
+
         .user-image {
             margin-right: 14px;
         }
 
         .header-text-wrapper {
+            .delete-icon {
+                display: none;
+                @media only screen and (max-width: 600px) {
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: transparent;
+                    position: absolute;
+                    top: -10px;
+                    border-radius: 100px;
+                    right: -10px;
+                    transition: all 0.3s;
+                }
+            }
+
             .username {
                 ::before {
                     content: '@';

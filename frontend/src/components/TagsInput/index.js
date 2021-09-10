@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { StyledTagsInput } from './StyledTagsInput';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-const TagsInput = ({tags, setTags, label}) => {
+const TagsInput = ({ tags, setTags, label }) => {
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            if (event.value !== '') {
-                setTags([...tags, event.target.value]);
+            if (event.target.value !== '') {
+                setTags([
+                    ...tags,
+                    event.target.value.replace(/(<([^>]+)>)/gi, ''),
+                ]);
                 event.target.value = '';
             }
         }
@@ -21,15 +24,16 @@ const TagsInput = ({tags, setTags, label}) => {
     return (
         <StyledTagsInput>
             <div className='tags-container'>
-                {tags.map((tag, idx) => (
-                    <div
-                        className='tag-container'
-                        onClick={() => removeTagHandler(tag)}
-                    >
-                        <p>{tag}</p>
-                        <AiFillCloseCircle />
-                    </div>
-                ))}
+                {tags &&
+                    tags.map((tag, idx) => (
+                        <div
+                            className='tag-container'
+                            onClick={() => removeTagHandler(tag)}
+                        >
+                            <p>{tag}</p>
+                            <AiFillCloseCircle />
+                        </div>
+                    ))}
             </div>
             <div className='form-group'>
                 <span>{label}</span>

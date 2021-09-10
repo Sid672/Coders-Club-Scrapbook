@@ -1,36 +1,54 @@
 import styled from 'styled-components';
 
-export const StyledLogin = styled.main`
+export const StyledPopupProfile = styled.div`
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 30;
+
+    .overlay {
+        background-color: #000000a7;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+    }
     @media only screen and (max-width: 750px) {
         display: flex;
         flex-direction: column;
     }
-    .image-container {
-        position: relative;
-        width: 50%;
-        @media only screen and (max-width: 750px) {
-            width: 100vw;
-        }
-        .blur {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-        img {
-            width: 100%;
-        }
-    }
 
     .form-container {
-        position: absolute;
-        top: 0;
-        right: 0;
         width: 50%;
         height: 100%;
+        max-width: 800px;
+        z-index: 11;
+        position: relative;
         background-color: white;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        .icon-container {
+            color: black;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 200px;
+            padding: 10px;
+            :hover {
+                background-color: #cbbcf6;
+                color: #000;
+            }
+        }
 
         @media only screen and (max-width: 750px) {
             width: 100%;
@@ -38,7 +56,7 @@ export const StyledLogin = styled.main`
             padding-top: 50px;
         }
         .text-container {
-            width: 70%;
+            width: 85%;
             max-width: 600px;
 
             @media only screen and (max-width: 750px) {
@@ -49,23 +67,6 @@ export const StyledLogin = styled.main`
                     font-family: 'Raleway';
                     font-size: 40px;
                     font-weight: 700;
-                    display: flex;
-                    align-items: center;
-
-                    .icon-container {
-                        color: black;
-                        margin-right: 30px;
-                        transition: all 0.3s;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        border-radius: 200px;
-                        padding: 10px;
-                        :hover {
-                            background-color: #cbbcf6;
-                            color: #000;
-                        }
-                    }
                 }
 
                 .sub-heading {

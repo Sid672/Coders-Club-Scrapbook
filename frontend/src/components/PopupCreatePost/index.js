@@ -4,21 +4,20 @@ import { StyledCreatePost } from './StyledCreatePost';
 import { useDispatch } from 'react-redux';
 import { sendNewPost } from '../../actions/postActions';
 
-const PopupCreatePost = ({ setIsPopupOpen , history}) => {
+const PopupCreatePost = ({ setIsPopupOpen, history }) => {
     const textareaRef = useRef('');
-    const dispatch = useDispatch()
-    const [text, setText] = useState('')
+    const dispatch = useDispatch();
+    const [text, setText] = useState('');
     const [tags, setTags] = useState([]);
 
     const onSubmitHandler = () => {
-        dispatch(sendNewPost(text, tags));
+        dispatch(sendNewPost(text.replace(/(<([^>]+)>)/gi, ''), tags));
         setTimeout(() => {
-            setIsPopupOpen(false)
+            setIsPopupOpen(false);
 
-            window.location.reload(false)
-
+            window.location.reload(false);
         }, 2000);
-    }
+    };
 
     // toast.promise(dispatch(sendNewPost(text, tags)), {
     //     pending: 'Posting...',
@@ -57,11 +56,13 @@ const PopupCreatePost = ({ setIsPopupOpen , history}) => {
                     ref={textareaRef}
                     row='2'
                     placeholder="what's going on ?"
-                    onChange={(e) => {setText(e.target.value)}}
+                    onChange={(e) => {
+                        setText(e.target.value);
+                    }}
                 ></textarea>
 
                 <div className='wrapper-tag-btn'>
-                    <TagsInput tags={tags} setTags={setTags} label='tags'/>
+                    <TagsInput tags={tags} setTags={setTags} label='tags' />
                     <div className='btn-container' onClick={onSubmitHandler}>
                         <button className='new-post'>Post</button>
                     </div>

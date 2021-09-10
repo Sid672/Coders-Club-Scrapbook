@@ -1,4 +1,7 @@
 import {
+    UPDATE_USER_DETAILS_FAIL,
+    UPDATE_USER_DETAILS_REQUEST,
+    UPDATE_USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
@@ -60,7 +63,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const register =
-    (email, name, password, username,  bio, tags, image) => async (dispatch) => {
+    (email, name, password, username, bio, tags, image) => async (dispatch) => {
         try {
             dispatch({
                 type: USER_REGISTER_REQUEST,
@@ -79,7 +82,7 @@ export const register =
             const { data } = await toast.promise(
                 axios.post(
                     '/api/v1/users/',
-                    { name, username, email, password,  bio, tags, image },
+                    { name, username, email, password, bio, tags, image },
                     config
                 ),
                 {
@@ -177,3 +180,58 @@ export const getUserDetailsById = (username) => async (dispatch, getState) => {
         });
     }
 };
+
+export const updateProfile =
+    (name, bio, tags, image) => async (dispatch, getState) => {
+        try {
+            dispatch({
+                type: UPDATE_USER_DETAILS_REQUEST,
+            });
+
+            const {
+                userLogin: { userInfo },
+            } = getState();
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${userInfo.token}`,
+                },
+            };
+
+            const options = {
+                hideProgressBar: true,
+            };
+
+            const { data } = await toast.promise(
+                axios.put(
+                    '/api/v1/users/profile',
+                    { name, bio, interests: tags, image },
+                    config
+                ),
+                {
+                    pending: 'Uploading....',
+                    success: 'Uploaded Successfully',
+                    error: {
+                        render({ data }) {
+                            return `${data.response.data.error}`;
+                        },
+                    },
+                },
+                options
+            );
+
+            dispatch({
+                type: UPDATE_USER_DETAILS_SUCCESS,
+                payload: data,
+            });
+        } catch (error) {
+            dispatch({
+                type: UPDATE_USER_DETAILS_FAIL,
+                payload:
+                    error.response && error.response.data.error
+                        ? error.response.data.error
+                        : error,
+            });
+        }
+    };

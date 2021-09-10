@@ -16,6 +16,31 @@ export const StyledProfile = styled.div`
         background-color: white;
         padding: 30px 0 50px 0;
         border-radius: 15px;
+        position: relative;
+        .icon-container {
+            color: black;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+           transition: all .3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 200px;
+            padding: 10px;
+            :hover {
+                background-color: #cbbcf6;
+                color: #000;
+
+            }
+
+            @media only screen and (max-width: 600px) {
+                top: -5px;
+            right: -5px;
+        }
+
+            
+        }
 
         @media only screen and (max-width: 750px) {
             width: 90%;
@@ -58,7 +83,6 @@ export const StyledProfile = styled.div`
             }
 
             .intrest-container {
-                
                 h3 {
                     margin-bottom: 15px;
                     color: black;
@@ -78,7 +102,6 @@ export const StyledProfile = styled.div`
                         margin-top: 8px;
                         margin-right: 8px;
                     }
-
                 }
             }
         }

@@ -16,15 +16,16 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
+    "express": "4.17.1",
     "express-async-handler": "^1.1.4",
     "firebase": "^9.0.1",
     "framer-motion": "^4.1.17",
+    "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
     "multer": "^1.4.3",
     "react-router-dom": "^5.2.0",
-    "utils-merge": "^1.0.1",
-    "express": "4.17.1"
+    "utils-merge": "^1.0.1"
   },
   "devDependencies": {
     "concurrently": "^6.2.1",

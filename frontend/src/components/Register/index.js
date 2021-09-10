@@ -9,6 +9,8 @@ import TagsInput from '../TagsInput';
 import Loader from '../Loader/Loader';
 import axios from 'axios';
 import backupImage from '../../images/profile.png';
+import { IoIosArrowDropleftCircle } from 'react-icons/io';
+
 const Register = ({ register, location, history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,9 +37,8 @@ const Register = ({ register, location, history }) => {
 
         if (image === '') {
             register(email, name, password, username, bio, tags);
-        }else{
+        } else {
             register(email, name, password, username, bio, tags, image);
-
         }
     };
 
@@ -151,11 +152,17 @@ const Register = ({ register, location, history }) => {
                     <div className='form-container'>
                         <div className='text-container'>
                             <div className='form-header'>
-                                <h1 className='heading-main'>Finish Sign up</h1>
+                                <h1 className='heading-main'>
+                                    <div
+                                        className='icon-container'
+                                        onClick={pageToggler}
+                                    >
+                                        <IoIosArrowDropleftCircle />
+                                    </div>
+                                    Finish Sign up
+                                </h1>
                                 <p className='sub-heading'>
-                                    Feeling Lazy?{' '}
-                                    
-                                        <span>Skip for now </span>
+                                    Feeling Lazy? <span>Skip for now </span>
                                 </p>
                             </div>
                             <div className='form-fields'>
