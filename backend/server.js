@@ -6,12 +6,12 @@ import posts from './routes/postsRoutes.js';
 import users from './routes/usersRoutes.js';
 import uploads from './routes/uploadRoutes.js';
 import errorHandler from './middleware/error.js';
-import helmet from 'helmet'
 dotenv.config();
 connectDB();
 
 const app = express();
-app.use(helmet())
+
+  
 app.use(express.json());
 
 app.use('/api/v1/posts', posts);
