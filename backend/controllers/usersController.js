@@ -113,6 +113,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     };
     if (user) {
         user.name = removeHtml(req.body.name) || user.name;
+        user.profileImage = req.body.image || user.profileImage;
         user.interests = req.body.interests || user.interests;
         user.bio = removeHtml(req.body.bio) || user.bio;
         // if (req.body.password) {

@@ -20,7 +20,7 @@
     "express-async-handler": "^1.1.4",
     "firebase": "^9.0.1",
     "framer-motion": "^4.1.17",
-    "joi": "^17.4.2",
+    "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
     "multer": "^1.4.3",

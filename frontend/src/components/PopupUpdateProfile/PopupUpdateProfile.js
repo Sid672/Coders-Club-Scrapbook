@@ -57,6 +57,8 @@ const PopupUpdateProfile = ({
             );
 
             setImage(data);
+            console.log(image)
+            console.log(data)
             const tempimg = document.getElementById('output');
             tempimg.src = URL.createObjectURL(e.target.files[0]);
             setUploading(false);

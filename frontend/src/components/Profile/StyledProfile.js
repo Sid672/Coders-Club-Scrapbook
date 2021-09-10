@@ -22,7 +22,7 @@ export const StyledProfile = styled.div`
             position: absolute;
             top: 30px;
             right: 30px;
-           transition: all .3s;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,19 +31,16 @@ export const StyledProfile = styled.div`
             :hover {
                 background-color: #cbbcf6;
                 color: #000;
-
             }
 
             @media only screen and (max-width: 600px) {
                 top: -5px;
-            right: -5px;
-        }
-
-            
+                right: -5px;
+            }
         }
 
         @media only screen and (max-width: 750px) {
-            width: 90%;
+            width: 95%;
             margin: 10px auto;
         }
         .text-section {
@@ -59,6 +56,9 @@ export const StyledProfile = styled.div`
                 h1 {
                     @media only screen and (max-width: 600px) {
                         font-size: 25px;
+                    }
+                    @media only screen and (max-width: 500px) {
+                        font-size: 20px;
                     }
                 }
 
@@ -111,12 +111,17 @@ export const StyledProfile = styled.div`
         .img-container {
             img {
                 border-radius: 10000px;
-                width: 200px;
+                width: 170px;
+                height: 170px;
+                object-fit: cover;
                 @media only screen and (max-width: 750px) {
                     width: 150px;
+                    height: 150px;
                 }
                 @media only screen and (max-width: 600px) {
                     width: 120px;
+                    height: 120px;
+
                 }
             }
         }
