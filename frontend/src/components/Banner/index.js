@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyledBanner } from './banner.header';
-import { AiFillSlackCircle, AiOutlinePlusCircle, BsPlusCircleFill } from 'react-icons/bs';
+import {BsPlusCircleFill } from 'react-icons/bs';
 import PopupCreatePost from '../PopupCreatePost';
 import { useSelector } from 'react-redux';
 

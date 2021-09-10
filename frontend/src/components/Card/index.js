@@ -11,13 +11,8 @@ const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
     };
 
     const html = urlify(text);
-    var stringToHTML = function (str) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(str, 'text/html');
-        return doc.body;
-    };
+   
     
-console.log(stringToHTML(html))
 
     let postDate = '';
     if (

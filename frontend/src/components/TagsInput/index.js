@@ -17,7 +17,6 @@ const TagsInput = ({ tags, setTags, label }) => {
 
     const removeTagHandler = (tag) => {
         let filteredTags = tags.filter((t) => t !== tag);
-        console.log(filteredTags);
         setTags(filteredTags);
     };
 

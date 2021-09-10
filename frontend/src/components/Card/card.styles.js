@@ -35,7 +35,9 @@ export const StyledCard = styled.section`
         .user-image {
             margin-right: 14px;
             width: 60px;
+            height: 60px;
             border-radius: 1000px;
+            object-fit: cover;
         }
 
         .header-text-wrapper {
