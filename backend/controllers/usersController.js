@@ -74,7 +74,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             profileImage: user.profileImage,
         });
 
-        console.log(user);
+        // console.log(user);
     } else {
         res.status(404);
         throw new Error('User not found');
@@ -98,7 +98,7 @@ const getUserByUsername = asyncHandler(async (req, res) => {
             profileImage: user.profileImage,
         });
 
-        console.log(user);
+        // console.log(user);
     } else {
         res.status(404);
         throw new Error('User not found');

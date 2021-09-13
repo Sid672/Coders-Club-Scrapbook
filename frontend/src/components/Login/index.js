@@ -27,6 +27,7 @@ const Login = ({login, location, history}) => {
     };
     return (
         <Fragment>
+
             <Header />
             <StyledLogin>
                 <div className='image-container'>

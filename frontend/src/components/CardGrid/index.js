@@ -21,6 +21,7 @@ const CardGrid = (props) => {
                 <Loader />
             ) : posts && posts.length !== 0 ? (
                 <StyledCardGrid>
+
                     {posts.map((post, idx) => (
                         <Card
                             key={idx}

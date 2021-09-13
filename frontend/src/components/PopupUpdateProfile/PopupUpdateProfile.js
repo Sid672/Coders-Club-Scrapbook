@@ -43,6 +43,8 @@ const PopupUpdateProfile = ({
         formData.append('image', file);
         setUploading(true);
 
+        await axios.delete(`/api/v1/upload/${image.split('/')[4]}`);
+
         try {
             const config = {
                 headers: {
@@ -56,9 +58,8 @@ const PopupUpdateProfile = ({
                 config
             );
 
-            setImage(data);
-            console.log(image)
-            console.log(data)
+            setImage(data.imagePath);
+
             const tempimg = document.getElementById('output');
             tempimg.src = URL.createObjectURL(e.target.files[0]);
             setUploading(false);

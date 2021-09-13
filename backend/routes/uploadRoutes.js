@@ -2,6 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import path from 'path';
 
+import { uploadFile, getFileStream, deleteObject } from '../utils/s3.js';
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -37,7 +38,21 @@ const upload = multer({
     },
 });
 
-router.post('/', upload.single('image'), (req, res) => {
-    res.send(`/${req.file.path}`);
-});
+router
+    .post('/', upload.single('image'), async (req, res) => {
+        const result = await uploadFile(req.file);
+        // console.log(result);
+        res.send({ imagePath: `/api/v1/upload/${result.Key}` });
+    })
+    .get('/:key', (req, res) => {
+        const key = req.params.key;
+        // console.log(key);
+        const readStream = getFileStream(key);
+        readStream.pipe(res);
+    })
+    .delete('/:key', (req, res) => {
+        const key = req.params.key;
+        // console.log(key);
+        res.send('delete succussfully');
+    });
 export default router;

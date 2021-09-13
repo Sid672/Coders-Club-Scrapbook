@@ -42,6 +42,8 @@ const Register = ({ register, location, history }) => {
         }
     };
 
+
+
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
@@ -61,7 +63,7 @@ const Register = ({ register, location, history }) => {
                 config
             );
 
-            setImage(data);
+            setImage(data.imagePath);
             const tempimg = document.getElementById('output');
             tempimg.src = URL.createObjectURL(e.target.files[0]);
             setUploading(false);

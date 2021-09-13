@@ -38,7 +38,7 @@ const Profile = (props) => {
                     )}
                     <div className='user-info-container'>
                         <div className='icon-container' onClick={popupToggler}>
-                            <AiFillEdit size={30}/>
+                            <AiFillEdit size={30} />
                         </div>
                         <div className='img-section'>
                             <div className='img-container'>
@@ -67,7 +67,7 @@ const Profile = (props) => {
                             <div className='intrest-container'>
                                 <h3>Intrests</h3>
                                 {user.interests.map((intr, idx) => (
-                                    <h4>{intr}</h4>
+                                    <h4 key={idx}>{intr}</h4>
                                 ))}
                             </div>
                         </div>
@@ -81,6 +81,7 @@ const Profile = (props) => {
                                 createdAt={post.createdAt}
                                 _id={post._id}
                                 isDelete={true}
+                                key={post._id}
                             />
                         ))}
                     </div>
