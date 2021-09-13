@@ -82,6 +82,7 @@ const Profile = (props) => {
                                 _id={post._id}
                                 isDelete={true}
                                 key={post._id}
+                                postImage={post.postImage}
                             />
                         ))}
                     </div>

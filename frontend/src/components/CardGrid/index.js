@@ -7,7 +7,6 @@ import Loader from '../Loader/Loader';
 
 const CardGrid = (props) => {
     const { listPosts } = props;
-
     const postList = useSelector((state) => state.postList);
 
     const { loading, posts, error } = postList;
@@ -21,7 +20,6 @@ const CardGrid = (props) => {
                 <Loader />
             ) : posts && posts.length !== 0 ? (
                 <StyledCardGrid>
-
                     {posts.map((post, idx) => (
                         <Card
                             key={idx}
@@ -30,6 +28,8 @@ const CardGrid = (props) => {
                             tags={post.tags}
                             profilePhoto={post.userInfo.profileImage}
                             createdAt={post.createdAt}
+                            // postImage={post.postImage}
+                            postImage={post.postImage}
                         />
                     ))}
                 </StyledCardGrid>

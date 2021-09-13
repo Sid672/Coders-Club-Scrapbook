@@ -57,6 +57,8 @@ const AllUsersProfile = ({ location, match }) => {
                                 text={post.text}
                                 tags={post.tags}
                                 createdAt={post.createdAt}
+                                postImage={post.postImage}
+
                             />
                         ))}
                     </div>

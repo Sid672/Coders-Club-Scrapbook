@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyledTagsInput } from './StyledTagsInput';
 import { AiFillCloseCircle } from 'react-icons/ai';
 

@@ -157,6 +157,13 @@ export const StyledProfilePost = styled.section`
     .post-text {
         word-wrap: break-word;
     }
+    .post-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        margin: 14px 0;
+
+    }
 
     .post-footer {
         margin-top: 10px;

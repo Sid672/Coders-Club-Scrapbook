@@ -59,6 +59,17 @@ export const StyledCard = styled.section`
     .post-text {
         word-wrap: break-word;
     }
+    .post-image {
+        width: 100%;
+        height: auto;
+        margin: 14px 0;
+        object-fit: contain;
+        transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        :hover{
+            transform: scale(1.03);
+        }
+
+    }
 
     .post-footer {
         margin-top: 10px;

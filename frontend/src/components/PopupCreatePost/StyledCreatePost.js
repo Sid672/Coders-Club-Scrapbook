@@ -49,12 +49,40 @@ export const StyledCreatePost = styled.div`
             }
         }
 
+        .input-container {
+            color: black;
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            h4 {
+                margin-left: 30px;
+                color: black;
+                text-align: center;
+            }
+            .upload-input {
+                width: 100%;
+                height: 100%;
+                border-radius: 6px;
+                border: 2px solid black;
+                box-sizing: border-box;
+                outline: none;
+                padding: 12px 20px;
+                margin: 8px 0;
+                position: absolute;
+                opacity: 0; /* make transparent */
+                font-size: 20px;
+            }
+        }
+
         .wrapper-tag-btn {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             .btn-container {
-         
                 button {
                     cursor: pointer;
                     box-shadow: -1px 3px 3px 0 rgba(80, 80, 80, 0.2);
@@ -69,7 +97,7 @@ export const StyledCreatePost = styled.div`
                     display: flex;
                     width: 100px;
                     justify-content: center;
-                    
+
                     :hover {
                         background: #0d0735;
                         color: #fff;

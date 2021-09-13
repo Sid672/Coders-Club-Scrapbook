@@ -12,10 +12,13 @@ const PostSchema = new mongoose.Schema(
             type: [String],
         },
 
-        userInfo: { 
+        userInfo: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true
+            required: true,
+        },
+        postImage: {
+            type: String,
         },
     },
     {

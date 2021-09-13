@@ -3,20 +3,56 @@ import TagsInput from '../TagsInput';
 import { StyledCreatePost } from './StyledCreatePost';
 import { useDispatch } from 'react-redux';
 import { sendNewPost } from '../../actions/postActions';
+import axios from 'axios';
+import { FiUploadCloud } from 'react-icons/fi';
 
 const PopupCreatePost = ({ setIsPopupOpen, history }) => {
     const textareaRef = useRef('');
     const dispatch = useDispatch();
     const [text, setText] = useState('');
     const [tags, setTags] = useState([]);
+    const [postImage, setPostImage] = useState('');
+    const [uploading, setUploading] = useState(false);
 
     const onSubmitHandler = () => {
-        dispatch(sendNewPost(text.replace(/(<([^>]+)>)/gi, ''), tags));
+        dispatch(
+            sendNewPost(text.replace(/(<([^>]+)>)/gi, ''), tags, postImage)
+        );
         setTimeout(() => {
             setIsPopupOpen(false);
 
             window.location.reload(false);
         }, 2000);
+    };
+
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0];
+        console.log(file);
+        const formData = new FormData();
+        formData.append('image', file);
+        setUploading(true);
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
+
+            const { data } = await axios.post(
+                '/api/v1/upload',
+                formData,
+                config
+            );
+
+            setPostImage(data.imagePath);
+            const tempimg = document.getElementById('output');
+            tempimg.src = URL.createObjectURL(e.target.files[0]);
+            setUploading(false);
+        } catch (error) {
+            console.error(error);
+            setUploading(false);
+        }
     };
 
     // toast.promise(dispatch(sendNewPost(text, tags)), {
@@ -60,6 +96,16 @@ const PopupCreatePost = ({ setIsPopupOpen, history }) => {
                         setText(e.target.value);
                     }}
                 ></textarea>
+                {postImage !== '' && <img id='output' width='100%' />}
+                <div className='input-container'>
+                    <FiUploadCloud size={20} />
+                    <h4>Upload Image</h4>
+                    <input
+                        type='file'
+                        className='upload-input'
+                        onChange={(e) => uploadFileHandler(e)}
+                    />
+                </div>
 
                 <div className='wrapper-tag-btn'>
                     <TagsInput tags={tags} setTags={setTags} label='tags' />

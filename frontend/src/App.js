@@ -7,6 +7,7 @@ import ProfilePage from './pages/profile';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllUsersProfilePage from './pages/allUsersprofile';
+import IndividualPhoto from './components/IndividualPhoto';
 
 function App() {
     // const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
             <Route path='/login' component={Login} exact />
             <Route path='/register' component={Register} exact />
             <Route path='/profile' component={ProfilePage} exact />
+            <Route path='/view/:id' component={IndividualPhoto} exact />
             <Route
                 path='/user/profile/:username'
                 component={AllUsersProfilePage}

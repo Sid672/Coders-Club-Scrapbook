@@ -2,17 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledCard } from './card.styles';
 import moment from 'moment';
-const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
+const Card = ({
+    username,
+    text,
+    image,
+    tags,
+    profilePhoto,
+    createdAt,
+    postImage,
+}) => {
     const urlify = (text) => {
         const urlRegex = /(https?:\/\/[^\s]+)/g;
         return text.replace(urlRegex, (url) => {
-            return `<a href="${url}">${url}</a>`;
+            return `<a href="${url}" target="_blank">${url}</a>`;
         });
     };
 
     const html = urlify(text);
-   
-    
 
     let postDate = '';
     if (
@@ -37,8 +43,11 @@ const Card = ({ username, text, image, tags, profilePhoto, createdAt }) => {
                 </div>
             </div>
 
-            <article className='post-text' dangerouslySetInnerHTML={{ __html: html}} ></article>
-
+            <article
+                className='post-text'
+                dangerouslySetInnerHTML={{ __html: html }}
+            ></article>
+            {postImage !== '' && <Link  target="_blank" to={`/view/${postImage.split("/")[4]}`}><img className='post-image' src={postImage} /></Link>}
             <div className='post-footer'>
                 {tags.map((tag, idx) => (
                     <div key={idx} className='tag-container'>

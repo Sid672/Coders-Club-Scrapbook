@@ -23,7 +23,7 @@ export const listPosts = () => async (dispatch) => {
     }
 };
 
-export const sendNewPost = (text, tags) => async (dispatch, getState) => {
+export const sendNewPost = (text, tags, postImage) => async (dispatch, getState) => {
     try {
         dispatch({
             type: CREATE_NEW_POST_REQUEST,
@@ -55,6 +55,7 @@ export const sendNewPost = (text, tags) => async (dispatch, getState) => {
                     {
                         text,
                         tags,
+                        postImage
                     },
                     config
                 )

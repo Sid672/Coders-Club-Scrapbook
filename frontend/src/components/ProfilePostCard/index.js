@@ -4,8 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deletePost } from '../../actions/postActions';
 import { StyledProfilePost } from './StyledProfilePost';
 import { MdDelete } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
-const ProfilePostCard = ({ text, tags, createdAt,  _id, isDelete }) => {
+const ProfilePostCard = ({
+    text,
+    tags,
+    createdAt,
+    _id,
+    isDelete,
+    postImage,
+}) => {
+    const urlify = (text) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.replace(urlRegex, (url) => {
+            return `<a href="${url}" target="_blank">${url}</a>`;
+        });
+    };
+
+    const html = urlify(text);
     const dispatch = useDispatch();
 
     const { success } = useSelector((state) => state.deletePost);
@@ -48,7 +64,11 @@ const ProfilePostCard = ({ text, tags, createdAt,  _id, isDelete }) => {
                 </div>
             </div>
 
-            <article class='post-text'>{text}</article>
+            <article
+                className='post-text'
+                dangerouslySetInnerHTML={{ __html: html }}
+            ></article>
+            {postImage !== '' && <Link  target="_blank" to={`/view/${postImage.split("/")[4]}`}><img className='post-image' src={postImage} alt='profile-img'/></Link>}
 
             <div className='post-footer'>
                 {tags.map((tag) => (

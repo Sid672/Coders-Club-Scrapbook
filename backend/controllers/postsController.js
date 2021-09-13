@@ -67,13 +67,14 @@ export const getPost = asyncHandler(async (req, res, next) => {
 // });
 
 export const createPost = asyncHandler(async (req, res, next) => {
-    const { text, tags } = req.body;
+    const { text, tags, postImage } = req.body;
     const userId = req.user._id;
 
     const post = await Post.create({
         text,
         tags,
         userInfo: userId,
+        postImage
     });
 
     const user = await User.findById(userId);
@@ -83,6 +84,7 @@ export const createPost = asyncHandler(async (req, res, next) => {
     const postToPopulate = await Post.findById(post._id).populate('userInfo', {
         username: 1,
         name: 1,
+        postImage: 1
     });
     console.log(postToPopulate);
     await postToPopulate.save();
