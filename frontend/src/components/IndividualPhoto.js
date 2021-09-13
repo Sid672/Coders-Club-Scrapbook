@@ -17,7 +17,7 @@ const Div = styled.div`
     height: 100vh;
     background-color: black;
     img {
-        width: 50%;
+        width: 100%;
         height: auto;
         max-height: 100vh;
         object-fit: contain;

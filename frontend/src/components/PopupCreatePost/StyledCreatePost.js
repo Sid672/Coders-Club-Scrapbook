@@ -29,6 +29,9 @@ export const StyledCreatePost = styled.div`
         position: relative;
         min-height: 200px;
         box-sizing: border-box;
+        @media only screen and (max-width: 750px) {
+            padding: 30px;
+        }
         textarea {
             /* box-sizing: padding-box; */
             overflow: hidden;
@@ -97,7 +100,11 @@ export const StyledCreatePost = styled.div`
                     display: flex;
                     width: 100px;
                     justify-content: center;
-
+                    @media only screen and (max-width: 750px) {
+                        width: 80px;
+                        margin-left: 20px;
+                        padding: 15px 17px;
+                    }
                     :hover {
                         background: #0d0735;
                         color: #fff;

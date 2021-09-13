@@ -4,7 +4,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 
 const TagsInput = ({ tags, setTags, label }) => {
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' || event.key === ' ' ) {
             if (event.target.value !== '') {
                 setTags([
                     ...tags,
@@ -14,6 +14,7 @@ const TagsInput = ({ tags, setTags, label }) => {
             }
         }
     };
+    
 
     const removeTagHandler = (tag) => {
         let filteredTags = tags.filter((t) => t !== tag);
