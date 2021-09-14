@@ -21,7 +21,25 @@ const ProfilePostCard = ({
         });
     };
 
-    const html = urlify(text);
+    const usernameFinder = (text) => {
+        const urlRegex = /@[a-zA-Z]+/g;
+
+        return text.replace(urlRegex, (username) => {
+            console.log(username);
+            console.log();
+            console.log(
+                `<Link to="/user/profile/${
+                    username.split('@')[1]
+                }" target="_blank">${username}</Link>`
+            );
+            return `<a href="/user/profile/${
+                username.split('@')[1]
+            }" >${username}</a>`;
+        });
+    };
+
+    let html = urlify(text);
+    html = usernameFinder(html);
     const dispatch = useDispatch();
 
     const { success } = useSelector((state) => state.deletePost);
@@ -68,7 +86,15 @@ const ProfilePostCard = ({
                 className='post-text'
                 dangerouslySetInnerHTML={{ __html: html }}
             ></article>
-            {postImage !== '' && <Link  target="_blank" to={`/view/${postImage.split("/")[4]}`}><img className='post-image' src={postImage} alt='profile-img'/></Link>}
+            {postImage !== '' && (
+                <Link target='_blank' to={`/view/${postImage.split('/')[4]}`}>
+                    <img
+                        className='post-image'
+                        src={postImage}
+                        alt='profile-img'
+                    />
+                </Link>
+            )}
 
             <div className='post-footer'>
                 {tags.map((tag) => (

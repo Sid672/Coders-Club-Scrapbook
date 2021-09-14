@@ -29,7 +29,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
     }
 
-        const removeHtml = (str) => {
+    const removeHtml = (str) => {
         return str.replace(/(<([^>]+)>)/gi, '');
     };
 
@@ -120,8 +120,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
         //     user.password = req.body.password;
         // }
 
-        
-
         const updatedUser = await user.save();
         res.json({
             _id: updatedUser._id,
@@ -135,10 +133,29 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     }
 });
 
+const getAllUsers = asyncHandler(async (req, res) => {
+    const users = await User.find({});
+
+    if (users) {
+        const usernameList = [];
+        users.map((user, idx) => {
+            usernameList.push(user.username);
+        });
+
+        res.json({
+            usernameList,
+        });
+    } else {
+        res.status(404);
+        throw new Error('User not found');
+    }
+});
+
 export {
     authUser,
     getUserProfile,
     registerUser,
     updateUserProfile,
     getUserByUsername,
+    getAllUsers,
 };

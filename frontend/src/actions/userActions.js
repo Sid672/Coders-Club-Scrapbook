@@ -12,6 +12,10 @@ import {
     USER_REGISTER_FAIL,
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
+    GET_ALL_USERS,
+    GET_ALL_USERS_SUCCESS,
+    GET_ALL_USERS_FAIL,
+    GET_ALL_USERS_REQUEST
 } from '../constants/userConstants';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -150,6 +154,31 @@ export const getUserDetails = () => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: USER_DETAILS_FAIL,
+            payload:
+                error.response && error.response.data.error
+                    ? error.response.data.error
+                    : error,
+        });
+    }
+};
+export const getAllUsers = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: GET_ALL_USERS_REQUEST,
+        });
+
+    
+      
+
+        const { data } = await axios.get('/api/v1/users');
+
+        dispatch({
+            type: GET_ALL_USERS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: GET_ALL_USERS_FAIL,
             payload:
                 error.response && error.response.data.error
                     ? error.response.data.error
